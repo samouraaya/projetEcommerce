@@ -1,0 +1,22 @@
+BackBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: BackBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+    oneToMany:
+        tickets:
+            targetEntity: Tickets
+            mappedBy: category
+    lifecycleCallbacks: {  }

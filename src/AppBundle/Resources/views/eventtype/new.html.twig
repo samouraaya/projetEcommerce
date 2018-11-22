@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+{% include 'header.html.twig'  %}    
+{% endblock %}
+   
+{% block content %}
+    <!-- Main content -->
+  
+    <section class="content">
+    <h1>Eventtype creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+    {{ form_end(form) }}
+  <input type="submit" value="Create" />
+    <ul>
+        <li>
+            <a href="{{ path('eventtype_index') }}">Back to the list</a>
+        </li>
+    </ul>
+ </section>
+ {% endblock %}   
+ 
+ 
+ {% block footer %}    
+  
+{% include 'footer.html.twig'  %}  
+
+ {% endblock %}   
+ 

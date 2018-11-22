@@ -1,0 +1,19 @@
+BackBundle\Entity\EventType:
+    type: entity
+    table: null
+    repositoryClass: BackBundle\Repository\EventTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToMany:
+        events:
+            targetEntity: Event
+            mappedBy: eventtype
+    lifecycleCallbacks: {  }

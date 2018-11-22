@@ -1,0 +1,23 @@
+BackBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: BackBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable : true
+        lastName:
+            type: string
+            length: 255
+            nullable : true
+        Adresse:
+            type: text
+           
+    lifecycleCallbacks: {  }

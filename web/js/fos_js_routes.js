@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"category_show_product":{"tokens":[["variable","\/","[^\/]++","categoryId"],["text","\/category\/showprod"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":["GET"],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http"});

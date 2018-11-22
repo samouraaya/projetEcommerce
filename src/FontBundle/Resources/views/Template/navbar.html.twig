@@ -1,0 +1,74 @@
+{#<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <a class="navbar-brand" href="#" style="margin-right: 100px">Project name</a>
+    <ul class="nav navbar-nav">
+
+
+        {% for categorie in categories %}
+            
+            <li class="nav-item">
+
+                <a class="nav-link" href="">{{ categorie.name }}<span class="sr-only">(current)</span></a>
+
+            </li>
+            {% for ticket in categorie.tickets %}
+
+          
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="">{{ ticket.name }}<span class="sr-only">(current)</span></a>
+
+                </li>
+
+            {% endfor %}
+        {% endfor %}
+
+    </ul>
+</nav>
+#}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% for categorie in categories %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ categorie.name }}
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% for ticket in categorie.tickets %}
+                            <a class="dropdown-item" href="#">{{ ticket.name }}</a>
+                        {% endfor %}
+                    </div>
+
+                </li>
+
+            {% endfor %}
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{ path('ticket_index')}}" >DASHBORD </a></li>
+            {#                       id="navbarDropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> logout</a></li>#}
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ path('fos_user_security_logout')}}" >logout </a></li>
+{#                       id="navbarDropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> logout</a></li>#}
+                {% else %}
+                <li class="dropdown user user-menu">
+                       <a class="nav-link dropdown-toggle" href="{{ path('fos_user_security_login')}}">login</a></li>
+{#                    <a href="{{ path('fos_user_security_login')}}" class="dropdown-toggle" data-toggle="dropdown"> login</a></li>#}
+
+
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>

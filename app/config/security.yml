@@ -1,0 +1,50 @@
+security:
+    encoders:
+        #cryptage de la clase user (algorithme
+        #bcript cost:4 (nbre de fois exceuter le cryptage )ou sha512 )
+        BackBundle\Entity\User: bcrypt
+
+    role_hierarchy:
+        #ROLE_ :TOUJOURS debute par ROLE_
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+#3 ROLE ROLE_USER A9AL WA7DA 
+   #FOURNISSEUR d'authentification bech connecter (par défaut il ya mot de passe)
+    providers: 
+        in_memory: 
+            memory: ~
+        fos_userbundle:
+#            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
+#parafeu 
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        #main :nom de firewall c'est main
+        main: 
+            #firewall pour toute l'application (pour acceder à l'application)si vous etes pas connecter yraj3ek lil login
+            pattern: ^/
+            #parametre de securite par symfony
+            form_login:
+                #service c'est le provider
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:       true
+            anonymous:    true
+#la première couche de sécurité aprés l'authentifaction
+    access_control:
+        #les role mnathmin min a9al role il admin
+        #pas de role IS_AUTHENTICATED_ANONYMOUSLY
+        #LES 3 ROLE SANS CONNECTION
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #mot de passe oublier
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #AY ROUTE YODKHLILHA KEN MAYEBDA CONNECTE ^/ toute l'application
+#        - { path: ^/, role: IS_AUTHENTICATED_FULLY}
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/ticket, role: ROLE_ADMIN }

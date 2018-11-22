@@ -1,0 +1,34 @@
+
+    <!-- Main content -->
+
+    <section class="content">
+        <h1>Ticket</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ tickets.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ tickets.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('ticket_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a href="{{ path('ticket_edit', { 'id': tickets.id }) }}">Edit</a>
+            </li>
+           <li>
+                <a href="{{ path('ticket_pdf', { 'id': tickets.id }) }} ">telecharger</a>
+            </li>
+            
+        </ul>
+    </section>
+
+

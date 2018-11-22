@@ -1,0 +1,9 @@
+font_homepage:
+    path:     /
+    defaults: { _controller: FontBundle:Default:index }
+font_menu:
+    path:     /menu
+    defaults: { _controller: FontBundle:Default:menu }
+#pdf_homepage:
+#    path:     /pdf
+#    defaults: { _controller: FontBundle:Default:pdf }

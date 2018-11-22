@@ -1,0 +1,24 @@
+BackBundle\Entity\Image:
+    type: entity
+    table: null
+    repositoryClass: BackBundle\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+
+    oneToOne:
+        ticket:
+            targetEntity: Tickets
+            joinColumn:
+                name: id_ticket
+                referencedColumnName: id
+
+
+
+    lifecycleCallbacks: {  }

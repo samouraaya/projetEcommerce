@@ -1,0 +1,15 @@
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+app_event:
+        resource: "@AppBundle/Resources/config/routing/event.yml"
+        prefix:   /event
+app_eventtype:
+        resource: "@AppBundle/Resources/config/routing/eventtype.yml"
+        prefix:   /eventtype
+app_ticket:
+        resource: "@AppBundle/Resources/config/routing/tickets.yml"
+        prefix:   /ticket
+app_category:
+        resource: "@AppBundle/Resources/config/routing/category.yml"
+        prefix:   /category

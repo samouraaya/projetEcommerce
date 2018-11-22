@@ -1,0 +1,1 @@
+{"category_show_product":{"path":"\/category\/showprod\/{categoryId}","host":"","defaults":{"_controller":"AppBundle\\Controller\\CategoryController::showTicketCategoryAction"},"requirements":[],"options":{"compiler_class":"Symfony\\Component\\Routing\\RouteCompiler"},"schemes":[],"methods":["GET"],"condition":""}}

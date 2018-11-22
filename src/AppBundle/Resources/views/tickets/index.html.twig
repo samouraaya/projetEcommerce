@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'header.html.twig'  %}    
+{% endblock %}
+
+{% block content %}
+    <!-- Main content -->
+
+    <section class="content">
+        <h1>Tickets list</h1>
+{#         <div id="block-message"></div>#}
+        <select class="status_select">
+            {% for category in categories %}
+                <option     value="{{category.id}}"> {{category.name}}</option>
+            {% endfor %}
+        </select> 
+     
+        <table id="content-tickets">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                    <tr id="block-content-{{ticket.id}}">
+                        <td><a href="{{ path('ticket_show', { 'id': ticket.id }) }}">{{ ticket.id }}</a></td>
+                        <td>{{ ticket.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('ticket_show', { 'id': ticket.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('ticket_edit', { 'id': ticket.id }) }}">edit</a>
+                                </li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         
+        <ul>
+            <li>
+                <a href="{{ path('ticket_new') }}">Create a new tickets</a>
+            </li>
+        </ul>
+    </section>
+
+{% endblock %}   
+
+
+{% block footer %}    
+
+    {% include 'footer.html.twig'  %}  
+
+{% endblock %}   
+
+{% block javascripts %}
+    
+ {{parent()}}  
+ 
+ <script>
+  
+ $('.status_select').on('change', function (e) {
+      e.preventDefault();
+       var id= $( ".status_select").val();
+       alert(id);
+                  $.ajax({
+                        url: Routing.generate('category_show_product', {categoryId: id}),
+                        method: "GET",
+                        data: {},
+                        success: function (result) {
+                            
+{#                           var  = jQuery.parseJSON('result');#}
+                        
+{#var c =JSON.parse(result);
+  console.log(c);#}
+                          $('#block-message').html(result);
+{#                            $('#block-content-'+id).add();#}
+                        },
+                        error: function (error) {
+                             console.log(error);
+                        },
+
+                    });
+ 
+ });
+ </script>
+{% endblock %}  

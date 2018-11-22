@@ -1,0 +1,25 @@
+BackBundle\Entity\Tickets:
+    type: entity
+    table: null
+    repositoryClass: BackBundle\Repository\TicketsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        prix:
+            type: float
+        qte:
+            type: integer
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: tickets
+            cascade: ["persist"]
+
+    lifecycleCallbacks: {  }

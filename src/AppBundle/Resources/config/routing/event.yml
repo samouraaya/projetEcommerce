@@ -1,0 +1,9 @@
+event_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Event:index" }
+    methods:  GET
+event_new:
+    path:     /new
+    defaults : { _controller: "AppBundle:Event:new"}
+    methods:    [GET,POST]
+

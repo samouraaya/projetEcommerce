@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+{% include 'header.html.twig'  %}    
+{% endblock %}
+   
+{% block content %}
+    <!-- Main content -->
+  
+    <section class="content">
+    <h1>Eventtype edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('eventtype_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+ </section>
+{% endblock %}   
+ 
+ 
+ {% block footer %}    
+  
+{% include 'footer.html.twig'  %}  
+
+ {% endblock %}   
+ 

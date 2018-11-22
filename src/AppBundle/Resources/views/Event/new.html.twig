@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+{% include 'header.html.twig'  %}    
+{% endblock %}
+   
+{% block content %}
+    <!-- Main content -->
+  
+    <section class="content">
+    <h1>Event creation</h1>
+    {{ form_start(form) }}
+     {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+       {# {{ form_widget(form) }}#}
+       <br>
+         {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+        {{ form_errors(form.description) }}
+        <br>
+        {{ form_label(form.eventtype) }}
+        {{ form_widget(form.eventtype) }}
+        {{ form_errors(form.eventtype) }}
+
+ <br>
+        {{ form_label(form.country) }}
+        {{ form_widget(form.country) }}
+        {{ form_errors(form.country) }}
+ <br>
+        {{ form_label(form.timezoneType) }}
+        {{ form_widget(form.timezoneType) }}
+        {{ form_errors(form.timezoneType) }}
+ <br>
+        {{ form_label(form.adresse) }}
+        {{ form_widget(form.adresse) }}
+        {{ form_errors(form.adresse) }}
+ <br>
+        {{ form_label(form.type) }}
+        {{ form_widget(form.type) }}
+        {{ form_errors(form.type) }}
+ {{ form_errors(form) }}
+      <input type="submit" value="Create" />
+{#
+    {{ form_end(form) }} #}
+{{form_widget(form._token)}}
+ {# {{ form.errors }}#}
+
+    </form>
+  </section>
+ {% endblock %}   
+ 
+ 
+ {% block footer %}    
+  
+{% include 'footer.html.twig'  %}  
+
+ {% endblock %}   
+ 
